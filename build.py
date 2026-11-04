@@ -16,6 +16,8 @@ SITE = {
 ROOT = pathlib.Path(__file__).parent
 OUT = ROOT / "docs"          # the finished site (GitHub Pages serves this folder)
 NAV = [("index.html", "Home"), ("features.html", "Features"), ("pricing.html", "Pricing"), ("faq.html", "FAQ")]
+# links leave out ".html" (maintlytics.com/features): GitHub Pages serves features.html for /features
+LINK = lambda page: "/" if page == "index.html" else "/" + page[:-5]
 
 HEAD = """<!doctype html>
 <html lang="en">
@@ -29,17 +31,17 @@ HEAD = """<!doctype html>
 <meta property="og:image" content="{domain}/img/overview.jpg">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="img/favicon.png">
-<link rel="apple-touch-icon" href="img/icon.png">
+<link rel="icon" href="/img/favicon.png">
+<link rel="apple-touch-icon" href="/img/icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
-<link rel="stylesheet" href="site.css">
+<link rel="stylesheet" href="/site.css">
 </head>
 <body>
 <header class="top"><div class="wrap">
-  <a class="brand" href="index.html"><img src="img/icon.png" alt="">Maintlytics</a>
+  <a class="brand" href="/"><img src="/img/icon.png" alt="">Maintlytics</a>
   <button class="menu" aria-label="Menu" onclick="document.querySelector('.nav').classList.toggle('open')">Menu</button>
-  <nav class="nav">{nav}<a class="btn gold" href="contact.html">Book a demo</a></nav>
+  <nav class="nav">{nav}<a class="btn gold" href="/contact">Book a demo</a></nav>
 </div></header>
 <main>
 """
@@ -47,11 +49,11 @@ HEAD = """<!doctype html>
 FOOT = """</main>
 <footer><div class="wrap">
   <div class="cols">
-    <div><a class="brand" href="index.html"><img src="img/icon.png" alt="">Maintlytics</a>
+    <div><a class="brand" href="/"><img src="/img/icon.png" alt="">Maintlytics</a>
       <p class="muted" style="margin-top:12px;font-size:15px">Maintenance KPIs, planning and reliability for plants that run on a CMMS.</p></div>
-    <div><h4>Product</h4><a href="features.html">Features</a><a href="pricing.html">Pricing</a><a href="faq.html">FAQ</a></div>
-    <div><h4>Company</h4><a href="contact.html">Book a demo</a><a href="mailto:{email}">{email}</a></div>
-    <div><h4>Legal</h4><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div>
+    <div><h4>Product</h4><a href="/features">Features</a><a href="/pricing">Pricing</a><a href="/faq">FAQ</a></div>
+    <div><h4>Company</h4><a href="/contact">Book a demo</a><a href="mailto:{email}">{email}</a></div>
+    <div><h4>Legal</h4><a href="/privacy">Privacy</a><a href="/terms">Terms</a></div>
   </div>
   <div class="fine"><span>© {year} {company}.</span>
     <button class="theme" onclick="toggleTheme()">Light / dark</button></div>
@@ -83,7 +85,7 @@ def build():
         m = re.match(r"<!--\s*title:\s*(.*?)\n\s*desc:\s*(.*?)\s*-->\n", text, re.S)
         title, desc = (m.group(1).strip(), m.group(2).strip()) if m else ("Maintlytics", "")
         body = text[m.end():] if m else text
-        nav = "".join(f'<a href="{href}"{" class=\"on\"" if href == page.name else ""}>{label}</a>' for href, label in NAV)
+        nav = "".join(f'<a href="{LINK(href)}"{" class=\"on\"" if href == page.name else ""}>{label}</a>' for href, label in NAV)
         html = HEAD.format(title=title, desc=desc, nav=nav, **SITE) + body + FOOT.format(year=datetime.date.today().year, **SITE)
         for k, v in SITE.items():
             html = html.replace("{{" + k + "}}", v)

@@ -1,0 +1,30 @@
+<!-- title: Book a demo — Maintlytics
+desc: See Maintlytics with a week of your own CMMS exports in a 30-minute demo. -->
+<div class="pagehead"><div class="wrap">
+  <span class="eyebrow">Book a demo</span>
+  <h1>See your own plant's numbers.</h1>
+  <p class="lead">Tell us a little about your plant. We'll set up a 30-minute demo — bring a week of CMMS exports if you can.</p>
+</div></div>
+
+<section style="padding-top:12px"><div class="wrap">
+  <form class="form" onsubmit="event.preventDefault(); demoMail(this)">
+    <label>Name<input name="name" autocomplete="name" required></label>
+    <label>Work email<input name="email" type="email" autocomplete="email" required></label>
+    <label>Company<input name="company" autocomplete="organization"></label>
+    <label>Role<select name="role"><option>Maintenance manager</option><option>Planner / scheduler</option><option>Reliability engineer</option><option>Plant manager</option><option>Other</option></select></label>
+    <label>Which CMMS do you use?<input name="cmms" placeholder="e.g. PMware"></label>
+    <label>Number of plants<select name="plants"><option>1</option><option>2–5</option><option>6+</option></select></label>
+    <label class="full">Anything we should know?<textarea name="msg"></textarea></label>
+    <div class="full btns"><button class="btn gold" type="submit">Request a demo</button></div>
+    <p class="note full" id="sent" hidden>Your email app should open with the request filled in — press Send there. If it doesn't, email us at <a href="mailto:{{email}}">{{email}}</a>.</p>
+    <p class="note full">This opens your email app, addressed to {{email}}.</p>
+  </form>
+  <script>
+  function demoMail(f) {
+    const v = n => (f.elements[n] && f.elements[n].value || '').trim();
+    const body = ['Name: ' + v('name'), 'Email: ' + v('email'), 'Company: ' + v('company'), 'Role: ' + v('role'), 'CMMS: ' + v('cmms'), 'Plants: ' + v('plants'), '', v('msg')].join('\n');
+    location.href = 'mailto:{{email}}?subject=' + encodeURIComponent('Maintlytics demo request — ' + (v('company') || v('name'))) + '&body=' + encodeURIComponent(body);
+    document.getElementById('sent').hidden = false;
+  }
+  </script>
+</div></section>

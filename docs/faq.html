@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FAQ — Maintlytics</title>
+<meta name="description" content="How Maintlytics gets your work orders, where the data lives, what it runs on and how long setup takes.">
+<meta property="og:title" content="FAQ — Maintlytics">
+<meta property="og:description" content="How Maintlytics gets your work orders, where the data lives, what it runs on and how long setup takes.">
+<meta property="og:image" content="https://maintlytics.com/img/overview.jpg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="img/favicon.png">
+<link rel="apple-touch-icon" href="img/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="brand" href="index.html"><img src="img/icon.png" alt="">Maintlytics</a>
+  <button class="menu" aria-label="Menu" onclick="document.querySelector('.nav').classList.toggle('open')">Menu</button>
+  <nav class="nav"><a href="index.html">Home</a><a href="features.html">Features</a><a href="pricing.html">Pricing</a><a href="faq.html" class="on">FAQ</a><a class="btn gold" href="contact.html">Book a demo</a></nav>
+</div></header>
+<main>
+<div class="pagehead"><div class="wrap center">
+  <span class="eyebrow">FAQ</span>
+  <h1>Questions, answered.</h1>
+  <p class="lead">Don't see yours? <a href="contact.html">Ask us</a>.</p>
+</div></div>
+
+<section style="padding-top:0"><div class="wrap">
+  <div class="faq">
+    <details open><summary>Which CMMS does it work with?</summary><p>It reads PMware's reports directly — the completed work-order report, the open work-order list, shift schedules, MTBF/MTTR pages, and the equipment and PM lists, saved as web pages. Other systems can bring their work orders in as a CSV export. If you use something else, ask us.</p></details>
+    <details><summary>Do my techs have to do anything differently?</summary><p>No. They keep closing work orders in the CMMS as they do today. Someone saves a few report pages — weekly, or daily for the open list — and the hub imports them on its own.</p></details>
+    <details><summary>Where does my data live?</summary><p>On a Mac in your plant. iPhones and iPads sync through your own iCloud account. Nothing is sent to our servers.</p></details>
+    <details><summary>Does it need the internet?</summary><p>No. Everything works on the plant network. The internet is only used if you choose iCloud sync for phones away from the plant, or the optional AI drafting.</p></details>
+    <details><summary>Can it be reached from outside the plant?</summary><p>Not unless you set that up. By default the web board and phones on the plant Wi-Fi talk to the hub directly, and it asks for an access key.</p></details>
+    <details><summary>How do I know the numbers are right?</summary><p>Every import is followed by 116 automatic self-checks. Counts are cross-checked between reports, every number opens to the work orders behind it, and Data health lists any record that could throw a number off.</p></details>
+    <details><summary>How long does setup take?</summary><p>An afternoon: install the hub, save your first set of report pages, set your production lines and crew calendar. Your history comes in with the first import.</p></details>
+    <details><summary>What does it run on?</summary><p>Windows PCs (the Windows app) and any modern browser on the plant network; any TV with a browser for the shop-floor board; iPhone, iPad and Apple Watch apps with widgets and Siri. The hub runs on a Mac in the plant today.</p></details>
+    <details><summary>Do we need Apple devices?</summary><p>No. Planners and supervisors can work from Windows PCs or any browser on the plant network, and the floor board runs on any TV with a browser. Today the hub itself runs on one Mac in the plant. iPhones, iPads and Apple Watches are optional — they add Siri, widgets and the full app in your pocket.</p></details>
+    <details><summary>Does it work with Siri and Apple Intelligence?</summary><p>Yes, on iPhone, iPad and Apple Watch. Ask Siri things like “How's Line 2 in Maintlytics?” or “What needs attention in Maintlytics?”. Apple Intelligence understands questions in your own words on the device, and the answer always comes from your plant's checked numbers.</p></details>
+    <details><summary>Can it use our own job-plan format?</summary><p>Yes. Import your existing Word job plans as they are, and new plans are written in the same layout.</p></details>
+    <details><summary>What about AI?</summary><p>It's optional. The planner can ask an AI model to draft a root-cause analysis or a job plan from your history; you choose the model, and a person checks it before anything is acted on.</p></details>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="cta">
+    <div><h2>Still deciding?</h2><p>See it with a week of your own exports.</p></div>
+    <div class="btns"><a class="btn gold" href="contact.html">Book a demo</a></div>
+  </div>
+</div></section>
+</main>
+<footer><div class="wrap">
+  <div class="cols">
+    <div><a class="brand" href="index.html"><img src="img/icon.png" alt="">Maintlytics</a>
+      <p class="muted" style="margin-top:12px;font-size:15px">Maintenance KPIs, planning and reliability for plants that run on a CMMS.</p></div>
+    <div><h4>Product</h4><a href="features.html">Features</a><a href="pricing.html">Pricing</a><a href="faq.html">FAQ</a></div>
+    <div><h4>Company</h4><a href="contact.html">Book a demo</a><a href="mailto:chad@czahner.com">chad@czahner.com</a></div>
+    <div><h4>Legal</h4><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div>
+  </div>
+  <div class="fine"><span>© 2026 Maintlytics.</span>
+    <button class="theme" onclick="toggleTheme()">Light / dark</button></div>
+</div></footer>
+<div class="lb" onclick="this.classList.remove('on')"><img alt=""></div>
+<script>
+// screenshots open full size; the theme choice is remembered on this device
+document.querySelectorAll('.shot img, .devices img').forEach(i => i.addEventListener('click', () => { const l = document.querySelector('.lb'); l.querySelector('img').src = i.src; l.classList.add('on') }));
+function toggleTheme() { const r = document.documentElement, dark = r.dataset.theme ? r.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches; r.dataset.theme = dark ? 'light' : 'dark'; try { localStorage.setItem('theme', r.dataset.theme) } catch (e) {} }
+try { const t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t } catch (e) {}
+</script>
+</body>
+</html>

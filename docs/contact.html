@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Book a demo — Maintlytics</title>
+<meta name="description" content="See Maintlytics with a week of your own CMMS exports in a 30-minute demo.">
+<meta property="og:title" content="Book a demo — Maintlytics">
+<meta property="og:description" content="See Maintlytics with a week of your own CMMS exports in a 30-minute demo.">
+<meta property="og:image" content="https://maintlytics.com/img/overview.jpg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="img/favicon.png">
+<link rel="apple-touch-icon" href="img/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="brand" href="index.html"><img src="img/icon.png" alt="">Maintlytics</a>
+  <button class="menu" aria-label="Menu" onclick="document.querySelector('.nav').classList.toggle('open')">Menu</button>
+  <nav class="nav"><a href="index.html">Home</a><a href="features.html">Features</a><a href="pricing.html">Pricing</a><a href="faq.html">FAQ</a><a class="btn gold" href="contact.html">Book a demo</a></nav>
+</div></header>
+<main>
+<div class="pagehead"><div class="wrap">
+  <span class="eyebrow">Book a demo</span>
+  <h1>See your own plant's numbers.</h1>
+  <p class="lead">Tell us a little about your plant. We'll set up a 30-minute demo — bring a week of CMMS exports if you can.</p>
+</div></div>
+
+<section style="padding-top:12px"><div class="wrap">
+  <form class="form" onsubmit="event.preventDefault(); demoMail(this)">
+    <label>Name<input name="name" autocomplete="name" required></label>
+    <label>Work email<input name="email" type="email" autocomplete="email" required></label>
+    <label>Company<input name="company" autocomplete="organization"></label>
+    <label>Role<select name="role"><option>Maintenance manager</option><option>Planner / scheduler</option><option>Reliability engineer</option><option>Plant manager</option><option>Other</option></select></label>
+    <label>Which CMMS do you use?<input name="cmms" placeholder="e.g. PMware"></label>
+    <label>Number of plants<select name="plants"><option>1</option><option>2–5</option><option>6+</option></select></label>
+    <label class="full">Anything we should know?<textarea name="msg"></textarea></label>
+    <div class="full btns"><button class="btn gold" type="submit">Request a demo</button></div>
+    <p class="note full" id="sent" hidden>Your email app should open with the request filled in — press Send there. If it doesn't, email us at <a href="mailto:chad@czahner.com">chad@czahner.com</a>.</p>
+    <p class="note full">This opens your email app, addressed to chad@czahner.com.</p>
+  </form>
+  <script>
+  function demoMail(f) {
+    const v = n => (f.elements[n] && f.elements[n].value || '').trim();
+    const body = ['Name: ' + v('name'), 'Email: ' + v('email'), 'Company: ' + v('company'), 'Role: ' + v('role'), 'CMMS: ' + v('cmms'), 'Plants: ' + v('plants'), '', v('msg')].join('\n');
+    location.href = 'mailto:chad@czahner.com?subject=' + encodeURIComponent('Maintlytics demo request — ' + (v('company') || v('name'))) + '&body=' + encodeURIComponent(body);
+    document.getElementById('sent').hidden = false;
+  }
+  </script>
+</div></section>
+</main>
+<footer><div class="wrap">
+  <div class="cols">
+    <div><a class="brand" href="index.html"><img src="img/icon.png" alt="">Maintlytics</a>
+      <p class="muted" style="margin-top:12px;font-size:15px">Maintenance KPIs, planning and reliability for plants that run on a CMMS.</p></div>
+    <div><h4>Product</h4><a href="features.html">Features</a><a href="pricing.html">Pricing</a><a href="faq.html">FAQ</a></div>
+    <div><h4>Company</h4><a href="contact.html">Book a demo</a><a href="mailto:chad@czahner.com">chad@czahner.com</a></div>
+    <div><h4>Legal</h4><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div>
+  </div>
+  <div class="fine"><span>© 2026 Maintlytics.</span>
+    <button class="theme" onclick="toggleTheme()">Light / dark</button></div>
+</div></footer>
+<div class="lb" onclick="this.classList.remove('on')"><img alt=""></div>
+<script>
+// screenshots open full size; the theme choice is remembered on this device
+document.querySelectorAll('.shot img, .devices img').forEach(i => i.addEventListener('click', () => { const l = document.querySelector('.lb'); l.querySelector('img').src = i.src; l.classList.add('on') }));
+function toggleTheme() { const r = document.documentElement, dark = r.dataset.theme ? r.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches; r.dataset.theme = dark ? 'light' : 'dark'; try { localStorage.setItem('theme', r.dataset.theme) } catch (e) {} }
+try { const t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t } catch (e) {}
+</script>
+</body>
+</html>

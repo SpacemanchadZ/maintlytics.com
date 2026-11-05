@@ -15,7 +15,7 @@ SITE = {
 
 ROOT = pathlib.Path(__file__).parent
 OUT = ROOT / "docs"          # the finished site (GitHub Pages serves this folder)
-NAV = [("index.html", "Home"), ("features.html", "Features"), ("pricing.html", "Pricing"), ("faq.html", "FAQ"), ("download.html", "Download")]
+NAV = [("index.html", "Home"), ("features.html", "Features"), ("faq.html", "FAQ"), ("download.html", "Download")]
 # links leave out ".html" (maintlytics.com/features): GitHub Pages serves features.html for /features
 LINK = lambda page: "/" if page == "index.html" else "/" + page[:-5]
 
@@ -51,7 +51,7 @@ FOOT = """</main>
   <div class="cols">
     <div><a class="brand" href="/"><img src="/img/icon.png" alt="">Maintlytics</a>
       <p class="muted" style="margin-top:12px;font-size:15px">Maintenance KPIs, planning and reliability for plants that run on a CMMS.</p></div>
-    <div><h4>Product</h4><a href="/features">Features</a><a href="/pricing">Pricing</a><a href="/faq">FAQ</a><a href="/download">Download</a></div>
+    <div><h4>Product</h4><a href="/features">Features</a><a href="/faq">FAQ</a><a href="/download">Download</a></div>
     <div><h4>Company</h4><a href="/contact">Book a demo</a><a href="mailto:{email}">{email}</a></div>
     <div><h4>Legal</h4><a href="/privacy">Privacy</a><a href="/terms">Terms</a></div>
   </div>

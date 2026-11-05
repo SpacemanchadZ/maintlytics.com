@@ -19,7 +19,6 @@ Then open http://127.0.0.1:8090 (this Mac only).
 ## Before going live
 
 1. Set the company name, email and domain at the top of `build.py`, then run it again.
-2. Fill in prices in `pages/pricing.html` (they show "$—" and "Prices to be set").
-3. Connect the demo form in `pages/contact.html` to a form service or email.
-4. Have Privacy and Terms reviewed.
-5. Upload `docs/` to the host (Netlify, Cloudflare Pages, GitHub Pages or any web host) and point the domain at it.
+2. Connect the demo form in `pages/contact.html` to a form service or email.
+3. Have Privacy and Terms reviewed.
+4. Upload `docs/` to the host (Netlify, Cloudflare Pages, GitHub Pages or any web host) and point the domain at it.
